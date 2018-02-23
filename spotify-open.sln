@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spotify-open", "spotify-open\spotify-open.csproj", "{2F1186ED-EEDD-4BBC-863B-638F8C90CD80}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{B0B613B3-CEA9-489B-82B2-0AF1475ECB38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "installer-actions", "installer-actions\installer-actions.csproj", "{52A3DB96-0071-4F04-A6AD-A43662498969}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F1186ED-EEDD-4BBC-863B-638F8C90CD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F1186ED-EEDD-4BBC-863B-638F8C90CD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F1186ED-EEDD-4BBC-863B-638F8C90CD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F1186ED-EEDD-4BBC-863B-638F8C90CD80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B613B3-CEA9-489B-82B2-0AF1475ECB38}.Debug|Any CPU.ActiveCfg = Debug
+		{B0B613B3-CEA9-489B-82B2-0AF1475ECB38}.Release|Any CPU.ActiveCfg = Release
+		{52A3DB96-0071-4F04-A6AD-A43662498969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52A3DB96-0071-4F04-A6AD-A43662498969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52A3DB96-0071-4F04-A6AD-A43662498969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52A3DB96-0071-4F04-A6AD-A43662498969}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0FEDD59-B06B-49EC-8413-58B646CB4888}
+	EndGlobalSection
+EndGlobal
