@@ -1,8 +1,8 @@
-# spotify-open
+# AbNeR Spotify Open
 If your friend share with you a spotify URL use this to open the url (track, album, playlist, etc) in the spotify desktop app.
 
 # Installation
-- Download the .msi file.
+- [Download the .msi file](https://github.com/abnerfs/spotify-open/releases/) from the lastest release.
 - Install
 - Enjoy
 
