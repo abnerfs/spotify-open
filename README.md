@@ -1,6 +1,10 @@
 # AbNeR Spotify Open
 If your friend share with you a spotify URL use this to open the url (track, album, playlist, etc) in the spotify desktop app.
 
+# Requirements 
+- [.NET Framework 4.0 or Higher](https://www.microsoft.com/pt-br/download/details.aspx?id=17851)
+- [Spotify Desktop](https://www.spotify.com/br/download/windows/)
+
 # Installation
 - [Download the .msi file](https://github.com/abnerfs/spotify-open/releases/) from the lastest release.
 - Install
