@@ -13,14 +13,10 @@ namespace installer_actions
     public partial class GRInstallCustomAction : Installer
     {
         static string environmentKey = @"SYSTEM\CurrentControlSet\Control\Session Manager\Environment";
-        static string pathUrl;
+        static string InstallationPath = Registry.LocalMachine.CreateSubKey(environmentKey).GetValue("SPOTIFY-OPEN", "", RegistryValueOptions.DoNotExpandEnvironmentNames).ToString();
 
         public GRInstallCustomAction()
         {
-            pathUrl = (string)Registry.LocalMachine.CreateSubKey(environmentKey).GetValue("SPOTIFY-OPEN", "", RegistryValueOptions.DoNotExpandEnvironmentNames);
-            var UltimaLetra = pathUrl.Substring(pathUrl.Length - 1, 1);
-            if (UltimaLetra == "\\" || UltimaLetra == "/")
-                pathUrl = pathUrl.Substring(0, pathUrl.Length - 1);
         }
 
         public override void Install(IDictionary stateSaver)
@@ -28,33 +24,21 @@ namespace installer_actions
             base.Install(stateSaver);
         }
 
+
         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand)]
         public override void Commit(IDictionary savedState)
         {
             base.Commit(savedState);
 
-            string environmentVar = Environment.GetEnvironmentVariable("PATH");
-
-
-            //get non-expanded PATH environment variable            
-            string oldPath = (string)Registry.LocalMachine.CreateSubKey(environmentKey).GetValue("Path", "", RegistryValueOptions.DoNotExpandEnvironmentNames);
-
-
-            var index = oldPath.IndexOf(pathUrl);
-            if (index < 0)
-            {
-                //set the path as an an expandable string
-                Registry.LocalMachine.CreateSubKey(environmentKey).SetValue("Path", oldPath + ";" + pathUrl, RegistryValueKind.ExpandString);
-            }
-
+            /* using SetEnv.exe so don't need to restart the computer */
+            var CommandAddVariable = $"cd /D \"{InstallationPath}\" & SetEnv -a PATH %\"{InstallationPath}";
+            Cmd.RunCommandHidden(CommandAddVariable);
         }
 
         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand)]
         public override void Rollback(IDictionary savedState)
         {
             base.Rollback(savedState);
-
-
         }
 
         [System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand)]
@@ -63,19 +47,19 @@ namespace installer_actions
             base.Uninstall(savedState);
 
             //get non-expanded PATH environment variable            
-            string oldPath = (string)Registry.LocalMachine.CreateSubKey(environmentKey).GetValue("Path", "", RegistryValueOptions.DoNotExpandEnvironmentNames);
+            var oldPath = Registry.LocalMachine.CreateSubKey(environmentKey).GetValue("Path", "", RegistryValueOptions.DoNotExpandEnvironmentNames).ToString();
 
-            string removeString = pathUrl + ";";
+            var removeString = InstallationPath + ";";
             var index = oldPath.IndexOf(removeString);
             if (index < 0)
             {
-                removeString = pathUrl;
+                removeString = InstallationPath;
                 index = oldPath.IndexOf(removeString);
             }
 
             if (index > -1)
             {
-                oldPath = oldPath.Remove(index, pathUrl.Length);
+                oldPath = oldPath.Remove(index, InstallationPath.Length);
                 //set the path as an an expandable string
                 Registry.LocalMachine.CreateSubKey(environmentKey).SetValue("Path", oldPath, RegistryValueKind.ExpandString);
             }

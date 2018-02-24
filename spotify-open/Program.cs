@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using installer_actions;
 
 namespace spotify_open
 {
@@ -44,7 +45,6 @@ namespace spotify_open
             {
                 Console.WriteLine(ex.Message);
                 Console.ReadKey();
-                throw;
             }
         }
     }

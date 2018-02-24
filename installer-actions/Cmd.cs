@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 
-namespace spotify_open
+namespace installer_actions
 {
     public class Cmd
     {
